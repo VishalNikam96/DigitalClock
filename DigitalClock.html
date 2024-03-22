@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style type="text/css">
+        body
+        {
+            background-color: black;
+        }
+        #clock
+        {
+            width: 500px;
+            height: 300px;
+            border: 5px solid black ;
+            margin: 10% 10% 10% 30%;
+            border-radius: 10%;
+/*            background-color: black;*/
+            border: 2px solid red;
+        }
+        .img
+        {
+            width: 200px;
+            margin: 10px;
+        }
+
+        #time
+        {
+            border: 2px dotted black;
+            width: 280px;
+            margin-left: 110px;
+            font-size: 55px;
+            margin-top: -10px;
+            text-align: center;
+            color: orange;
+			font-family: Arial Black;
+			text-shadow: 0px 0px 10px orangered;
+			-webkit-text-stroke: 2px red;
+        }
+        #month
+        {
+            margin-top: -300px;
+            margin-left: 260px;
+            font-size: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            /* color: cyan; */
+        }
+
+        #date
+        {
+            margin-top: -50px;
+            margin-left: 320px;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+            font-weight: bolder;
+        }
+        #year
+        {
+            margin-left: 260px;
+            margin-top: -50px;
+            font-size: 60px;
+        }
+        .fullDate
+        {
+            color: yellow;
+            font-family: Arial Black;
+			text-shadow: 0px 0px 10px yellowgreen;
+			-webkit-text-stroke: 2px green;
+        }
+
+        .runImg
+        {
+            width: 40px;
+            color: white;
+            margin-top: 110px;
+            margin-left: 120px;
+        }
+
+        .heartImg
+        {
+            width: 40px;
+            color: white;
+            margin-top: 110px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="clock">
+            <img src="Maharaj.png" alt="err" class="img">
+            <h1 id="time">00:00:00</h1>
+            <h1 id="month" class="fullDate">Month</h1>
+            <h1 id="date" class="fullDate">00</h1>
+            <h1 id="year" class="fullDate">0000</h1>
+            <!-- <img src="run.png" alt="" class="runImg"> 
+            <img src="heart.png" alt="" class="heartImg">  -->
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        function displayTime()
+        {
+            let obj = new Date() ;
+            let hr = obj.getHours()%12;
+            let min = obj.getMinutes() ;
+            let sec = obj.getSeconds() ;
+            if(hr.toString().length=1)
+                hr="0"+hr ;
+
+            if(min.toString().length==1)
+                min = "0"+min ;
+
+            if(sec.toString().length==1)
+                sec = "0"+sec ;
+
+            document.getElementById("time").innerHTML=${hr}:${min}:${sec} ;
+
+            let date = obj.getDate() ;
+            if(date.toString().length==1)
+                date = "0"+date ;
+            document.getElementById("date").innerHTML=date ;
+
+            let month = obj.getMonth() ;
+            switch(month)
+            {
+                case 0: month = "Jan" ; break ;
+                case 1: month = "Feb" ; break ;
+                case 2: month = "March" ; break ;
+                case 3: month = "April" ; break ;
+                case 4: month = "May" ; break ;
+                case 5: month = "Jun" ; break ;
+                case 6: month = "July" ; break ;
+                case 7: month = "Aug" ; break ;
+                case 8: month = "Set" ; break ;
+                case 9: month = "Oct" ; break ;
+                case 10: month = "Nov" ; break ;
+                case 11: month = "Dec" ; break ;
+            }
+            document.getElementById("month").innerHTML=month ;
+
+            let year = obj.getFullYear() ;
+            document.getElementById("year").innerHTML=year ;
+        }
+        setInterval(displayTime,1000) ;
+    </script>
+</body>
+</html>
